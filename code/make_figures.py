@@ -1,4 +1,25 @@
 #!/usr/bin/env python3
+"""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
 """Figure generation for the PMB Topical Review:
 'Biophysics of Tumor Treating Fields: capacitive coupling and dielectric
  mechanisms of a field-based cancer therapy.'
@@ -9,6 +30,27 @@ equation; Maxwell/Wagner interfacial polarisation; Clausius-Mossotti /
 dielectrophoresis theory). No experimental or patient data are used; the
 figures are illustrative reproductions of established electro-physics and are
 fully reproducible from this script.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
 
 References for the models used:
 - Schwan H P 1957 (induced transmembrane potential)
@@ -36,13 +78,97 @@ COL_A, COL_B, COL_C = "#1f5c99", "#c0392b", "#2e8b57"
 
 
 def eps_star(eps_r, sigma, w):
-    """Complex permittivity eps' - j sigma/omega (rad convention)."""
+    """Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""Complex permittivity eps' - j sigma/omega (rad convention)."""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""
     return eps_r * EPS0 - 1j * sigma / w
 
 
 def shelled_sphere_eps(w, R, d, eps_mem, sig_mem, eps_cyt, sig_cyt):
-    """Effective complex permittivity of a single-shell (membrane+cytoplasm)
-    sphere - standard Maxwell-Wagner single-shell result (Jones 1995)."""
+    """Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""Effective complex permittivity of a single-shell (membrane+cytoplasm)
+    sphere - standard Maxwell-Wagner single-shell result (Jones 1995)."""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""
     gamma = R / (R - d)
     em = eps_star(eps_mem, sig_mem, w)
     ec = eps_star(eps_cyt, sig_cyt, w)
@@ -51,7 +177,49 @@ def shelled_sphere_eps(w, R, d, eps_mem, sig_mem, eps_cyt, sig_cyt):
 
 
 def cm_factor(w, eps_p, eps_med, sig_med):
-    """Clausius-Mossotti factor of the equivalent sphere in the medium."""
+    """Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""Clausius-Mossotti factor of the equivalent sphere in the medium."""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""
     ep = eps_p
     emed = eps_star(eps_med, sig_med, w)
     return (ep - emed) / (ep + 2 * emed)
@@ -59,10 +227,52 @@ def cm_factor(w, eps_p, eps_med, sig_med):
 
 def core_field_ratio(w, R, d, eps_mem, sig_mem, eps_cyt, sig_cyt,
                      eps_med, sig_med):
-    """|E_cyt / E_ext| inside the cytoplasm core of a concentric single-shell
+    """Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""|E_cyt / E_ext| inside the cytoplasm core of a concentric single-shell
     sphere (membrane shell + cytoplasm core) in a uniform AC field. Exact
     Laplace solution for coated dielectric sphere (Kotnik & Miklavcic 2000;
-    Jones 1995). e3=medium, e1=membrane shell, e2=cytoplasm core."""
+    Jones 1995). e3=medium, e1=membrane shell, e2=cytoplasm core."""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""
     e1 = eps_star(eps_mem, sig_mem, w)   # membrane
     e2 = eps_star(eps_cyt, sig_cyt, w)   # cytoplasm core
     e3 = eps_star(eps_med, sig_med, w)   # medium
@@ -72,9 +282,51 @@ def core_field_ratio(w, R, d, eps_mem, sig_mem, eps_cyt, sig_cyt,
 
 
 def transmembrane_potential(w, R, Cm, sig_cyt, sig_med, E0=100.0):
-    """Schwan induced transmembrane potential at the pole (cos th = 1).
+    """Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""Schwan induced transmembrane potential at the pole (cos th = 1).
     dVm = 1.5 R E / sqrt(1 + (w tau)^2), tau = R Cm (rho_i + rho_e/2).
-    E0 in V/m (100 V/m = 1 V/cm)."""
+    E0 in V/m (100 V/m = 1 V/cm)."""Figure generation for the Review:
+'The biophysics of Tumour Treating Fields: capacitive coupling, dielectric
+ dispersion and the intracellular electric field' (Yilmaz and Gul).
+
+Figures 2-5 of the article are computed by this script from standard, textbook
+biophysical models (single-shell dielectric cell model; Schwan transmembrane-
+potential equation; Maxwell-Wagner interfacial polarisation; Clausius-Mossotti /
+dielectrophoresis theory). No experimental or patient data are used.
+
+Note: the script also writes simple placeholder versions of fig1_concept.pdf and
+fig6_mitosis.pdf; in the article these two schematics are replaced by the
+illustrations described in the Generative AI Statement.
+
+Usage:  python3 make_figures.py      (writes PDFs to ./figures/)
+Requires: Python 3, numpy, matplotlib.
+
+References for the models used:
+- Schwan H P 1957 (induced transmembrane potential)
+- Foster K R, Schwan H P 1989 (dielectric properties, beta-dispersion)
+- Jones T B 1995 Electromechanics of Particles (Clausius-Mossotti, DEP)
+- Gimsa J, Wachner D 1998/2001 (single-shell field/torque)
+"""
     rho_i, rho_e = 1.0 / sig_cyt, 1.0 / sig_med
     tau = R * Cm * (rho_i + rho_e / 2.0)
     return 1.5 * R * E0 / np.sqrt(1 + (w * tau) ** 2), tau
@@ -183,7 +435,9 @@ def fig2():
     ax2.set_ylabel(r"effective $\sigma_{\rm cell}$ (S/m)", color=COL_C)
     ax2.tick_params(axis="y", labelcolor=COL_C)
     ax1.set_title(r"$\beta$-dispersion of a single-shell cell")
-    ax1.legend([l1, l2], [r"$\varepsilon'$", r"$\sigma$"], loc="center left")
+    ax1.legend([l1, l2], [r"$\varepsilon'$", r"$\sigma$"],
+               loc="center left", bbox_to_anchor=(0.02, 0.5),
+               framealpha=0.92, edgecolor="0.7")
     fig.tight_layout()
     fig.savefig("figures/fig2_dispersion.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -248,7 +502,8 @@ def fig4():
     ax.set_ylabel(r"Re$[K(\omega)]$  (CM factor)")
     ax.set_title("Dielectrophoretic response")
     ax.set_ylim(-0.6, 1.05)
-    ax.legend(loc="lower right")
+    ax.legend(loc="upper left", bbox_to_anchor=(0.02, 0.80),
+              framealpha=0.92, edgecolor="0.7")
     fig.tight_layout()
     fig.savefig("figures/fig4_cm_factor.pdf", bbox_inches="tight")
     plt.close(fig)
