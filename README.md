@@ -12,7 +12,7 @@ dielectric parameters cited in the manuscript. No experimental or patient data
 are used.
 
 ## Layout
-- `code/make_figures.py` — single script that reproduces every figure
+- `code/make_figures.py` — single script that reproduces the quantitative Figures 2–5 (it also writes simple placeholders for Figures 1 and 6, which appear in the article as schematic illustrations)
 - `figures/` — generated figures (PDF)
 
 ## Reproduce
